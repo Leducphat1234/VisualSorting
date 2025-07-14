@@ -156,12 +156,21 @@ async function qSort(left, right) {
     collection[i].style.backgroundColor = "green";
     collection[j].style.backgroundColor = "green";
     collection[pivot].style.backgroundColor = "green";
-    qSort(left, pivot-1);
-    qSort(pivot+1, right);
+    await qSort(left, pivot-1);
+    await qSort(pivot+1, right);
 }
 async function mSort(left, right) {
     if (left >= right) return;
     let mid = Math.floor((left + right) / 2);
+    if (delay > 0) await sleep(delay);
+        else {
+            step++;
+            if (step===max_step) {
+                await sleep(0);
+                step = 0;
+            }
+        }
+        if (Stopped) return;
     await mSort(left, mid);
     await mSort(mid+1, right);
     let tmp = [];
