@@ -244,5 +244,15 @@ function StartSorting(Sort) {
             collection[i].style.backgroundColor = "blue";
         }
         Sort(0, n-1);
+        const check = document.getElementById("isSorted");
+        let isSorted = true;
+        for (let i = 1; i < n; i++) {
+            if (collection[i-1].style.height > collection[i].style.height) {
+                isSorted = false;
+                break;
+            }
+        }
+        if (isSorted) check.innerText = "Sorted!";
+        else check.innerText = "";
     }
 }
