@@ -159,10 +159,81 @@ async function qSort(left, right) {
     qSort(left, pivot-1);
     qSort(pivot+1, right);
 }
-function StartSorting(Sort) {
-    Stopped = false;
-    for (let i = 0; i < n; i++) {
-        collection[i].style.backgroundColor = "blue";
+async function mSort(left, right) {
+    if (left >= right) return;
+    let mid = Math.floor((left + right) / 2);
+    await mSort(left, mid);
+    await mSort(mid+1, right);
+    let tmp = [];
+    let i = left;
+    let j = mid+1;
+    collection[left].style.backgroundColor = "purple";
+    collection[right].style.backgroundColor = "purple";
+    while (i <= mid && j <= right) {
+        let a = parseFloat(collection[i].style.height);
+        let b = parseFloat(collection[j].style.height);
+        collection[i].style.backgroundColor = "red";
+        collection[j].style.backgroundColor = "orange";
+        collection[left].style.backgroundColor = "purple";
+        collection[right].style.backgroundColor = "purple";
+        if (a < b) {
+            tmp.push(a);
+            i++;
+            collection[i-1].style.backgroundColor = "blue";
+            collection[left].style.backgroundColor = "purple";
+            collection[right].style.backgroundColor = "purple";
+        }
+        else {
+            tmp.push(b);
+            j++;
+            collection[j-1].style.backgroundColor = "blue";
+            collection[left].style.backgroundColor = "purple";
+            collection[right].style.backgroundColor = "purple";
+        }
+        if (delay > 0) await sleep(delay);
+        else {
+            step++;
+            if (step===max_step) {
+                await sleep(0);
+                step = 0;
+            }
+        }
+        if (Stopped) return;
     }
-    Sort(0, n-1);
+    while (i <= mid) {
+        collection[i].style.backgroundColor = "red";
+        tmp.push(parseFloat(collection[i++].style.height));
+        collection[i-1].style.backgroundColor = "blue";
+        collection[left].style.backgroundColor = "purple";
+        collection[right].style.backgroundColor = "purple";
+    }
+    while (j <= right) {
+        collection[j].style.backgroundColor = "red";
+        tmp.push(parseFloat(collection[j++].style.height));
+        collection[j-1].style.backgroundColor = "blue";
+        collection[left].style.backgroundColor = "purple";
+        collection[right].style.backgroundColor = "purple";
+    }
+    for (let i = 0; i < tmp.length; i++) {
+        collection[i + left].style.height = tmp[i] + "%";
+        collection[i + left].style.backgroundColor = "green";
+        if (delay > 0) await sleep(delay);
+        else {
+            step++;
+            if (step===max_step) {
+                await sleep(0);
+                step = 0;
+            }
+        }
+        if (Stopped) return;
+    }
+}
+function StartSorting(Sort) {
+    if (n) {
+        Stopped = false;
+        for (let i = 0; i < n; i++) {
+            collection[i].style.backgroundColor = "blue";
+        }
+        Sort(0, n-1);
+    }
 }
