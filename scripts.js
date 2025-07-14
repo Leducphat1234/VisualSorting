@@ -238,6 +238,8 @@ async function mSort(left, right) {
     }
 }
 async function StartSorting(Sort) {
+    const check = document.getElementById("checker");
+    check.innerText = "Sorting...";
     if (n) {
         Stopped = false;
         for (let i = 0; i < n; i++) {
@@ -245,7 +247,6 @@ async function StartSorting(Sort) {
         }
         await Sort(0, n-1);
     }
-    const check = document.getElementById("checker");
     let isSorted = true;
     for (let i = 1; i < n; i++) {
         if (parseFloat(collection[i-1].style.height) > parseFloat(collection[i].style.height)) {
