@@ -3,6 +3,7 @@ let Stopped = false;
 let n;
 let delay;
 let step = 0;
+let max_step = 10000;
 const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
@@ -49,7 +50,7 @@ async function selectionSort(left, right) {
             if (delay > 0) await sleep(delay);
             else {
                 step++;
-                if (step===100) {
+                if (step===max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -80,7 +81,7 @@ async function bubbleSort(left, right) {
             if (delay > 0) await sleep(delay);
             else {
                 step++;
-                if (step===100) {
+                if (step===max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -110,7 +111,7 @@ async function qSort(left, right) {
             if (delay > 0) await sleep(delay/2);
             else {
                 step++;
-                if (step===100) {
+                if (step===max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -127,7 +128,7 @@ async function qSort(left, right) {
             if (delay > 0) await sleep(delay/2);
             else {
                 step++;
-                if (step===100) {
+                if (step===max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -145,7 +146,7 @@ async function qSort(left, right) {
         if (delay > 0) await sleep(delay);
         else {
             step++;
-            if (step===100) {
+            if (step===max_step) {
                 await sleep(0);
                 step = 0;
             }
