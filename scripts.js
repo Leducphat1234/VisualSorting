@@ -2,6 +2,7 @@ const speed = document.getElementById("speed");
 let Stopped = false;
 let n;
 let delay;
+let step = 0;
 const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
@@ -46,7 +47,13 @@ async function selectionSort(left, right) {
             }
             if (Stopped) return;
             if (delay > 0) await sleep(delay);
-            else await sleepFrame();
+            else {
+                step++;
+                if (step===100) {
+                    await sleep(0);
+                    step = 0;
+                }
+            }
         }
         let tmp = collection[i].style.height;
         collection[i].style.height = collection[min_idx].style.height;
@@ -71,7 +78,13 @@ async function bubbleSort(left, right) {
             }
             if (Stopped) return;
             if (delay > 0) await sleep(delay);
-            else await sleepFrame();
+            else {
+                step++;
+                if (step===100) {
+                    await sleep(0);
+                    step = 0;
+                }
+            }
             collection[j].style.backgroundColor = "blue";
             collection[j+1].style.backgroundColor = "blue";
         }
@@ -95,6 +108,13 @@ async function qSort(left, right) {
             }
             else break;
             if (delay > 0) await sleep(delay/2);
+            else {
+                step++;
+                if (step===100) {
+                    await sleep(0);
+                    step = 0;
+                }
+            }
             if (Stopped) return;
         }
         while (parseFloat(collection[j].style.height) >= parseFloat(collection[pivot].style.height)) {
@@ -105,6 +125,13 @@ async function qSort(left, right) {
             }
             else break;
             if (delay > 0) await sleep(delay/2);
+            else {
+                step++;
+                if (step===100) {
+                    await sleep(0);
+                    step = 0;
+                }
+            }
             if (Stopped) return;
         }
         if (i == j) break;
@@ -116,7 +143,13 @@ async function qSort(left, right) {
         if (i == pivot) pivot = j;
         else if (j == pivot) pivot = i;
         if (delay > 0) await sleep(delay);
-        else await sleepFrame();
+        else {
+            step++;
+            if (step===100) {
+                await sleep(0);
+                step = 0;
+            }
+        }
         if (Stopped) return;
     }
     collection[i].style.backgroundColor = "green";
