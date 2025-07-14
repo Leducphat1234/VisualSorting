@@ -9,6 +9,7 @@ speed.addEventListener("input", () => {
     delay = (100 - cur_speed) * (1000 / 99);
 })
 const container = document.getElementById("container");
+const collection = container.children;
 function getInput() {
     container.innerHTML = "";
     n = parseInt(document.getElementById("n").value);
@@ -29,57 +30,99 @@ function stopSorting() {
 async function selectionSort(left, right) {
     for (let i = left; i <= right; i++) {
         let min_idx = i;
-        container.children[i].style.backgroundColor = "red";
+        collection[i].style.backgroundColor = "red";
         for (let j = i+1; j <= right; j++) {
-            container.children[j].style.backgroundColor = "red";
-            container.children[j-1].style.backgroundColor = "blue";
-            container.children[min_idx].style.backgroundColor = "orange";
-            if (parseFloat(container.children[j].style.height) < parseFloat(container.children[min_idx].style.height)) {
-                container.children[min_idx].style.backgroundColor = "blue";
-                container.children[i].style.backgroundColor = "red";
+            collection[j].style.backgroundColor = "red";
+            collection[j-1].style.backgroundColor = "blue";
+            collection[min_idx].style.backgroundColor = "orange";
+            if (parseFloat(collection[j].style.height) < parseFloat(collection[min_idx].style.height)) {
+                collection[min_idx].style.backgroundColor = "blue";
+                collection[i].style.backgroundColor = "red";
                 min_idx = j;
-                container.children[min_idx].style.backgroundColor = "orange";
+                collection[min_idx].style.backgroundColor = "orange";
             }
             if (Stopped) return;
             await sleep(delay);
         }
-        let tmp = container.children[i].style.height;
-        container.children[i].style.height = container.children[min_idx].style.height;
-        container.children[min_idx].style.height = tmp;
-        container.children[i].style.backgroundColor = "blue";
-        container.children[right].style.backgroundColor = "blue";
-        // container.children[min_idx].style.backgroundColor = "blue";
-        container.children[min_idx].style.backgroundColor = "blue";
-        container.children[i].style.backgroundColor = "green";
+        let tmp = collection[i].style.height;
+        collection[i].style.height = collection[min_idx].style.height;
+        collection[min_idx].style.height = tmp;
+        collection[i].style.backgroundColor = "blue";
+        collection[right].style.backgroundColor = "blue";
+        collection[min_idx].style.backgroundColor = "blue";
+        collection[i].style.backgroundColor = "green";
     }
-    container.children[right].style.backgroundColor = "green";
+    collection[right].style.backgroundColor = "green";
 }
 async function bubbleSort(left, right) {
     for (let i = left; i <= right; i++) {
         for (let j = left; j <= right-i-1; j++) {
-            container.children[j].style.backgroundColor = "red";
-            container.children[j+1].style.backgroundColor = "red";
-            if (parseFloat(container.children[j+1].style.height) < parseFloat(container.children[j].style.height)) {
-                container.children[j+1].style.backgroundColor = "orange";
-                let tmp = container.children[j].style.height;
-                container.children[j].style.height = container.children[j+1].style.height;
-                container.children[j+1].style.height = tmp;
+            collection[j].style.backgroundColor = "red";
+            collection[j+1].style.backgroundColor = "red";
+            if (parseFloat(collection[j+1].style.height) < parseFloat(collection[j].style.height)) {
+                collection[j+1].style.backgroundColor = "orange";
+                let tmp = collection[j].style.height;
+                collection[j].style.height = collection[j+1].style.height;
+                collection[j+1].style.height = tmp;
             }
             if (Stopped) return;
             await sleep(delay);
-            container.children[j].style.backgroundColor = "blue";
-            container.children[j+1].style.backgroundColor = "blue";
+            collection[j].style.backgroundColor = "blue";
+            collection[j+1].style.backgroundColor = "blue";
         }
-        container.children[right-i].style.backgroundColor = "green";
+        collection[right-i].style.backgroundColor = "green";
     }
 }
-async function qsort(left, right) {
-
+async function qSort(left, right) {
+    if (left > right) return;
+    let pivot = parseInt((left + right) / 2);
+    let i = left;
+    let j = right;
+    collection[i].style.backgroundColor = "red";
+    collection[j].style.backgroundColor = "red";
+    while (true) {
+        collection[pivot].style.backgroundColor = "purple";
+        while (parseFloat(collection[i].style.height) <= parseFloat(collection[pivot].style.height)) {
+            if (i < pivot) {
+                i++;
+                collection[i].style.backgroundColor = "red";
+                collection[i-1].style.backgroundColor = "blue";
+            }
+            else break;
+            await sleep(delay/2);
+            if (Stopped) return;
+        }
+        while (parseFloat(collection[j].style.height) >= parseFloat(collection[pivot].style.height)) {
+            if (j > pivot) {
+                j--;
+                collection[j].style.backgroundColor = "red";
+                collection[j+1].style.backgroundColor = "blue";
+            }
+            else break;
+            await sleep(delay/2);
+            if (Stopped) return;
+        }
+        if (i == j) break;
+        collection[i].style.backgroundColor = "orange";
+        collection[j].style.backgroundColor = "orange";
+        let tmp = collection[i].style.height;
+        collection[i].style.height = collection[j].style.height;
+        collection[j].style.height = tmp;
+        if (i == pivot) pivot = j;
+        else if (j == pivot) pivot = i;
+        await sleep(delay);
+        if (Stopped) return;
+    }
+    collection[i].style.backgroundColor = "green";
+    collection[j].style.backgroundColor = "green";
+    collection[pivot].style.backgroundColor = "green";
+    qSort(left, pivot-1);
+    qSort(pivot+1, right);
 }
-function StartSorting(TypeOfSort) {
+function StartSorting(Sort) {
     Stopped = false;
     for (let i = 0; i < n; i++) {
-        container.children[i].style.backgroundColor = "blue";
+        collection[i].style.backgroundColor = "blue";
     }
-    TypeOfSort(0, n-1);
+    Sort(0, n-1);
 }
