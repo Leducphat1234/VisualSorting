@@ -24,6 +24,9 @@ function getInput() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function sleepFrame() {
+    return new Promise(requestAnimationFrame);
+}
 function stopSorting() {
     Stopped = true;
 }
@@ -43,6 +46,7 @@ async function selectionSort(left, right) {
             }
             if (Stopped) return;
             if (delay > 0) await sleep(delay);
+            else await sleepFrame();
         }
         let tmp = collection[i].style.height;
         collection[i].style.height = collection[min_idx].style.height;
@@ -67,6 +71,7 @@ async function bubbleSort(left, right) {
             }
             if (Stopped) return;
             if (delay > 0) await sleep(delay);
+            else await sleepFrame();
             collection[j].style.backgroundColor = "blue";
             collection[j+1].style.backgroundColor = "blue";
         }
@@ -111,6 +116,7 @@ async function qSort(left, right) {
         if (i == pivot) pivot = j;
         else if (j == pivot) pivot = i;
         if (delay > 0) await sleep(delay);
+        else await sleepFrame();
         if (Stopped) return;
     }
     collection[i].style.backgroundColor = "green";
