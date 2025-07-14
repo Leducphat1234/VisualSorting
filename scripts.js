@@ -240,6 +240,7 @@ async function mSort(left, right) {
 async function StartSorting(Sort) {
     const check = document.getElementById("checker");
     check.innerText = "Sorting...";
+    check.style.color = "aliceblue";
     if (n) {
         Stopped = false;
         for (let i = 0; i < n; i++) {
