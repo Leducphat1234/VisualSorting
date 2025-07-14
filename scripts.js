@@ -237,22 +237,28 @@ async function mSort(left, right) {
         if (Stopped) return;
     }
 }
-function StartSorting(Sort) {
+async function StartSorting(Sort) {
     if (n) {
         Stopped = false;
         for (let i = 0; i < n; i++) {
             collection[i].style.backgroundColor = "blue";
         }
-        Sort(0, n-1);
-        const check = document.getElementById("isSorted");
-        let isSorted = true;
-        for (let i = 1; i < n; i++) {
-            if (collection[i-1].style.height > collection[i].style.height) {
-                isSorted = false;
-                break;
-            }
+        await Sort(0, n-1);
+    }
+    const check = document.getElementById("checker");
+    let isSorted = true;
+    for (let i = 1; i < n; i++) {
+        if (parseFloat(collection[i-1].style.height) > parseFloat(collection[i].style.height)) {
+            isSorted = false;
+            break;
         }
-        if (isSorted) check.innerText = "Sorted!";
-        else check.innerText = "";
+    }
+    if (isSorted) {
+        check.innerText = "Sorted!";
+        check.style.color = "green";
+    }
+    else {
+        check.innerText = "Error!";
+        check.style.color = "red";
     }
 }
