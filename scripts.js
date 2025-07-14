@@ -42,7 +42,7 @@ async function selectionSort(left, right) {
                 collection[min_idx].style.backgroundColor = "orange";
             }
             if (Stopped) return;
-            await sleep(delay);
+            if (delay > 0) await sleep(delay);
         }
         let tmp = collection[i].style.height;
         collection[i].style.height = collection[min_idx].style.height;
@@ -66,7 +66,7 @@ async function bubbleSort(left, right) {
                 collection[j+1].style.height = tmp;
             }
             if (Stopped) return;
-            await sleep(delay);
+            if (delay > 0) await sleep(delay);
             collection[j].style.backgroundColor = "blue";
             collection[j+1].style.backgroundColor = "blue";
         }
@@ -89,7 +89,7 @@ async function qSort(left, right) {
                 collection[i-1].style.backgroundColor = "blue";
             }
             else break;
-            await sleep(delay/2);
+            if (delay > 0) await sleep(delay/2);
             if (Stopped) return;
         }
         while (parseFloat(collection[j].style.height) >= parseFloat(collection[pivot].style.height)) {
@@ -99,7 +99,7 @@ async function qSort(left, right) {
                 collection[j+1].style.backgroundColor = "blue";
             }
             else break;
-            await sleep(delay/2);
+            if (delay > 0) await sleep(delay/2);
             if (Stopped) return;
         }
         if (i == j) break;
@@ -110,7 +110,7 @@ async function qSort(left, right) {
         collection[j].style.height = tmp;
         if (i == pivot) pivot = j;
         else if (j == pivot) pivot = i;
-        await sleep(delay);
+        if (delay > 0) await sleep(delay);
         if (Stopped) return;
     }
     collection[i].style.backgroundColor = "green";
