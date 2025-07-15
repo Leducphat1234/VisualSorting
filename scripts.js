@@ -10,7 +10,7 @@ speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
     currentSpeed.innerText = cur_speed + "%";
     delay = 100 - cur_speed;
-    max_step = -500*delay+10000;
+    max_step = -999*delay+10000;
 })
 const container = document.getElementById("container");
 const collection = container.children;
