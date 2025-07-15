@@ -15,7 +15,7 @@ body {
 }
 .child {
     display: inline-block;
-    width: 7px;
+    width: 5px;
     margin-left: 1px;
     margin-right: 1px;
     background-color: blue;

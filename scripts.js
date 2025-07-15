@@ -1,6 +1,7 @@
 const speed = document.getElementById("speed");
 let Stopped = false;
 let n;
+let width = 5;
 let delay;
 let step = 0;
 let max_step = 10000;
@@ -12,6 +13,12 @@ speed.addEventListener("input", () => {
 })
 const container = document.getElementById("container");
 const collection = container.children;
+const bw = document.getElementById("bw");
+const currentWidth = document.getElementById("currentWidth");
+bw.addEventListener("input", () => {
+    width = parseFloat(bw.value);
+    currentWidth.innerText = width + "px";
+})
 function getInput() {
     container.innerHTML = "";
     n = parseInt(document.getElementById("n").value);
@@ -20,6 +27,9 @@ function getInput() {
         const childDiv = document.createElement("div");
         childDiv.className = "child";
         childDiv.style.height = Math.floor(Math.random() * 101) + Math.random() + "%";
+        childDiv.style.width = width + "px";
+        childDiv.style.marginLeft = width/5;
+        childDiv.style.marginRight = width/5;
         container.appendChild(childDiv);
     }
 }
