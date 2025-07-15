@@ -218,14 +218,12 @@ async function mSort(left, right) {
     while (i <= mid) {
         collection[i].style.backgroundColor = "red";
         tmp.push(parseFloat(collection[i++].style.height));
-        collection[i-1].style.backgroundColor = "blue";
         collection[left].style.backgroundColor = "purple";
         collection[right].style.backgroundColor = "purple";
     }
     while (j <= right) {
         collection[j].style.backgroundColor = "red";
         tmp.push(parseFloat(collection[j++].style.height));
-        collection[j-1].style.backgroundColor = "blue";
         collection[left].style.backgroundColor = "purple";
         collection[right].style.backgroundColor = "purple";
     }
