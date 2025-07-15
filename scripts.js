@@ -4,12 +4,13 @@ let n;
 let width = 5;
 let delay;
 let step = 0;
-let max_step = 10000;
+let max_step = 5000;
 const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
     currentSpeed.innerText = cur_speed + "%";
-    delay = (100 - cur_speed) * (100 / 99);
+    delay = 100 - cur_speed;
+    max_step = -500*delay+10000;
 })
 const container = document.getElementById("container");
 const collection = container.children;
@@ -36,9 +37,6 @@ function getInput() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-function sleepFrame() {
-    return new Promise(requestAnimationFrame);
-}
 function stopSorting() {
     Stopped = true;
 }
@@ -57,7 +55,7 @@ async function selectionSort(left, right) {
                 collection[min_idx].style.backgroundColor = "orange";
             }
             if (Stopped) return;
-            if (delay > 0) await sleep(delay);
+            if (delay > 10) await sleep(delay);
             else {
                 step++;
                 if (step===max_step) {
@@ -88,7 +86,7 @@ async function bubbleSort(left, right) {
                 collection[j+1].style.height = tmp;
             }
             if (Stopped) return;
-            if (delay > 0) await sleep(delay);
+            if (delay > 10) await sleep(delay);
             else {
                 step++;
                 if (step===max_step) {
@@ -118,7 +116,7 @@ async function qSort(left, right) {
                 collection[i-1].style.backgroundColor = "blue";
             }
             else break;
-            if (delay > 0) await sleep(delay/2);
+            if (delay > 10) await sleep(delay/2);
             else {
                 step++;
                 if (step===max_step) {
@@ -135,7 +133,7 @@ async function qSort(left, right) {
                 collection[j+1].style.backgroundColor = "blue";
             }
             else break;
-            if (delay > 0) await sleep(delay/2);
+            if (delay > 10) await sleep(delay/2);
             else {
                 step++;
                 if (step===max_step) {
@@ -153,7 +151,7 @@ async function qSort(left, right) {
         collection[j].style.height = tmp;
         if (i == pivot) pivot = j;
         else if (j == pivot) pivot = i;
-        if (delay > 0) await sleep(delay);
+        if (delay > 10) await sleep(delay);
         else {
             step++;
             if (step===max_step) {
@@ -172,7 +170,7 @@ async function qSort(left, right) {
 async function mSort(left, right) {
     if (left >= right) return;
     let mid = Math.floor((left + right) / 2);
-    if (delay > 0) await sleep(delay);
+    if (delay > 10) await sleep(delay);
         else {
             step++;
             if (step===max_step) {
@@ -209,7 +207,7 @@ async function mSort(left, right) {
             collection[left].style.backgroundColor = "purple";
             collection[right].style.backgroundColor = "purple";
         }
-        if (delay > 0) await sleep(delay);
+        if (delay > 10) await sleep(delay);
         else {
             step++;
             if (step===max_step) {
@@ -236,7 +234,7 @@ async function mSort(left, right) {
     for (let i = 0; i < tmp.length; i++) {
         collection[i + left].style.height = tmp[i] + "%";
         collection[i + left].style.backgroundColor = "green";
-        if (delay > 0) await sleep(delay);
+        if (delay > 10) await sleep(delay);
         else {
             step++;
             if (step===max_step) {
