@@ -196,14 +196,12 @@ async function mSort(left, right) {
         if (a < b) {
             tmp.push(a);
             i++;
-            collection[i-1].style.backgroundColor = "blue";
             collection[left].style.backgroundColor = "purple";
             collection[right].style.backgroundColor = "purple";
         }
         else {
             tmp.push(b);
             j++;
-            collection[j-1].style.backgroundColor = "blue";
             collection[left].style.backgroundColor = "purple";
             collection[right].style.backgroundColor = "purple";
         }
