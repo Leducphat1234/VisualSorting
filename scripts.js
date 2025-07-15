@@ -9,7 +9,7 @@ const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
     currentSpeed.innerText = cur_speed + "%";
-    delay = (100 - cur_speed) * (1000 / 99);
+    delay = (100 - cur_speed) * (100 / 99);
 })
 const container = document.getElementById("container");
 const collection = container.children;
