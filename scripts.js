@@ -53,7 +53,7 @@ async function selectionSort(left, right) {
             if (delay > 10) await sleep(delay-10);
             else {
                 step++;
-                if (step===max_step) {
+                if (step >= max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -84,7 +84,7 @@ async function bubbleSort(left, right) {
             if (delay > 10) await sleep(delay-10);
             else {
                 step++;
-                if (step===max_step) {
+                if (step >= max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -114,7 +114,7 @@ async function qSort(left, right) {
             if (delay > 10) await sleep(delay/2);
             else {
                 step++;
-                if (step===max_step) {
+                if (step >= max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -131,7 +131,7 @@ async function qSort(left, right) {
             if (delay > 10) await sleep(delay/2);
             else {
                 step++;
-                if (step===max_step) {
+                if (step >= max_step) {
                     await sleep(0);
                     step = 0;
                 }
@@ -149,7 +149,7 @@ async function qSort(left, right) {
         if (delay > 10) await sleep(delay-10);
         else {
             step++;
-            if (step===max_step) {
+            if (step >= max_step) {
                 await sleep(0);
                 step = 0;
             }
@@ -168,7 +168,7 @@ async function mSort(left, right) {
     if (delay > 10) await sleep(delay-10);
         else {
             step++;
-            if (step===max_step) {
+            if (step >= max_step) {
                 await sleep(0);
                 step = 0;
             }
@@ -203,7 +203,7 @@ async function mSort(left, right) {
         if (delay > 10) await sleep(delay-10);
         else {
             step++;
-            if (step===max_step) {
+            if (step >= max_step) {
                 await sleep(0);
                 step = 0;
             }
@@ -228,7 +228,7 @@ async function mSort(left, right) {
         if (delay > 10) await sleep(delay-10);
         else {
             step++;
-            if (step===max_step) {
+            if (step >= max_step) {
                 await sleep(0);
                 step = 0;
             }
