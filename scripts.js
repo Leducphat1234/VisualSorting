@@ -4,7 +4,7 @@ let n;
 let width = 5;
 let delay;
 let step = 0;
-let max_step = 5000;
+let max_step = 10000;
 const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
