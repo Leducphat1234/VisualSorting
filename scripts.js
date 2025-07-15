@@ -55,7 +55,7 @@ async function selectionSort(left, right) {
                 collection[min_idx].style.backgroundColor = "orange";
             }
             if (Stopped) return;
-            if (delay > 10) await sleep(delay);
+            if (delay > 10) await sleep(delay-10);
             else {
                 step++;
                 if (step===max_step) {
@@ -86,7 +86,7 @@ async function bubbleSort(left, right) {
                 collection[j+1].style.height = tmp;
             }
             if (Stopped) return;
-            if (delay > 10) await sleep(delay);
+            if (delay > 10) await sleep(delay-10);
             else {
                 step++;
                 if (step===max_step) {
@@ -151,7 +151,7 @@ async function qSort(left, right) {
         collection[j].style.height = tmp;
         if (i == pivot) pivot = j;
         else if (j == pivot) pivot = i;
-        if (delay > 10) await sleep(delay);
+        if (delay > 10) await sleep(delay-10);
         else {
             step++;
             if (step===max_step) {
@@ -170,7 +170,7 @@ async function qSort(left, right) {
 async function mSort(left, right) {
     if (left >= right) return;
     let mid = Math.floor((left + right) / 2);
-    if (delay > 10) await sleep(delay);
+    if (delay > 10) await sleep(delay-10);
         else {
             step++;
             if (step===max_step) {
@@ -207,7 +207,7 @@ async function mSort(left, right) {
             collection[left].style.backgroundColor = "purple";
             collection[right].style.backgroundColor = "purple";
         }
-        if (delay > 10) await sleep(delay);
+        if (delay > 10) await sleep(delay-10);
         else {
             step++;
             if (step===max_step) {
@@ -234,7 +234,7 @@ async function mSort(left, right) {
     for (let i = 0; i < tmp.length; i++) {
         collection[i + left].style.height = tmp[i] + "%";
         collection[i + left].style.backgroundColor = "green";
-        if (delay > 10) await sleep(delay);
+        if (delay > 10) await sleep(delay-10);
         else {
             step++;
             if (step===max_step) {
