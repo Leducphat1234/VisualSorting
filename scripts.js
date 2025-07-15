@@ -222,7 +222,7 @@ async function mSort(left, right) {
         collection[right].style.backgroundColor = "purple";
     }
     while (j <= right) {
-        collection[j].style.backgroundColor = "red";
+        collection[j].style.backgroundColor = "orange";
         tmp.push(parseFloat(collection[j++].style.height));
         collection[left].style.backgroundColor = "purple";
         collection[right].style.backgroundColor = "purple";
