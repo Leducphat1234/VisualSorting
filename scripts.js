@@ -1,10 +1,5 @@
 const speed = document.getElementById("speed");
-let Stopped = false;
-let n;
-let width = 5;
-let delay;
-let step = 0;
-let max_step = 10000;
+let Stopped = false, n, width = 5, delay, step = 0, max_step = 10000;
 const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
@@ -12,10 +7,10 @@ speed.addEventListener("input", () => {
     delay = 100 - cur_speed;
     max_step = -999*delay+10000;
 })
-const container = document.getElementById("container");
-const collection = container.children;
-const bw = document.getElementById("bw");
-const currentWidth = document.getElementById("currentWidth");
+const container = document.getElementById("container"),
+ collection = container.children,
+ bw = document.getElementById("bw"),
+ currentWidth = document.getElementById("currentWidth");
 bw.addEventListener("input", () => {
     width = parseFloat(bw.value);
     currentWidth.innerText = width + "px";
