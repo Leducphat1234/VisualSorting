@@ -78,7 +78,7 @@ async function selectionSort(left, right) {
                 collection[min_idx].style.backgroundColor = "orange";
             }
             if (Stopped) return;
-            if (delay > 10) await sleep(delay-10);
+            if (delay >= 10) await sleep(delay-10);
             else {
                 step++;
                 if (step >= max_step) {
@@ -87,7 +87,7 @@ async function selectionSort(left, right) {
                     playTone(parseFloat(collection[j].style.height)*3+200);
                 }
             }
-            if (delay > 10) playTone(parseFloat(collection[j].style.height)*3+200);
+            if (delay >= 10) playTone(parseFloat(collection[j].style.height)*3+200);
         }
         let tmp = collection[i].style.height;
         collection[i].style.height = collection[min_idx].style.height;
@@ -111,7 +111,7 @@ async function bubbleSort(left, right) {
                 collection[j+1].style.height = tmp;
             }
             if (Stopped) return;
-            if (delay > 10) await sleep(delay-10);
+            if (delay >= 10) await sleep(delay-10);
             else {
                 step++;
                 if (step >= max_step) {
@@ -120,7 +120,7 @@ async function bubbleSort(left, right) {
                     playTone(parseFloat(collection[j].style.height)*3+200);
                 }
             }
-            if (delay > 10) playTone(parseFloat(collection[j].style.height)*3+200);
+            if (delay >= 10) playTone(parseFloat(collection[j].style.height)*3+200);
             collection[j].style.backgroundColor = "blue";
             collection[j+1].style.backgroundColor = "blue";
         }
@@ -143,7 +143,7 @@ async function qSort(left, right) {
                 collection[i-1].style.backgroundColor = "blue";
             }
             else break;
-            if (delay > 10) await sleep((delay-10)/2);
+            if (delay >= 10) await sleep((delay-10)/2);
             else {
                 step++;
                 if (step >= max_step) {
@@ -153,7 +153,7 @@ async function qSort(left, right) {
                 }
             }
             if (Stopped) return;
-            if (delay > 10) playTone(parseFloat(collection[i].style.height)*3+200);
+            if (delay >= 10) playTone(parseFloat(collection[i].style.height)*3+200);
         }
         while (parseFloat(collection[j].style.height) >= parseFloat(collection[pivot].style.height)) {
             if (j > pivot) {
@@ -162,7 +162,7 @@ async function qSort(left, right) {
                 collection[j+1].style.backgroundColor = "blue";
             }
             else break;
-            if (delay > 10) await sleep((delay-10)/2);
+            if (delay >= 10) await sleep((delay-10)/2);
             else {
                 step++;
                 if (step >= max_step) {
@@ -172,7 +172,7 @@ async function qSort(left, right) {
                 }
             }
             if (Stopped) return;
-            if (delay > 10) playTone(parseFloat(collection[j].style.height)*3+200);
+            if (delay >= 10) playTone(parseFloat(collection[j].style.height)*3+200);
         }
         if (i == j) break;
         collection[i].style.backgroundColor = "orange";
@@ -182,7 +182,7 @@ async function qSort(left, right) {
         collection[j].style.height = tmp;
         if (i == pivot) pivot = j;
         else if (j == pivot) pivot = i;
-        if (delay > 10) await sleep(delay-10);
+        if (delay >= 10) await sleep(delay-10);
         else {
             step++;
             if (step >= max_step) {
@@ -202,7 +202,7 @@ async function qSort(left, right) {
 async function mSort(left, right) {
     if (left >= right) return;
     let mid = Math.floor((left + right) / 2);
-    if (delay > 10) await sleep(delay-10);
+    if (delay >= 10) await sleep(delay-10);
         else {
             step++;
             if (step >= max_step) {
@@ -227,19 +227,19 @@ async function mSort(left, right) {
         collection[right].style.backgroundColor = "purple";
         if (a < b) {
             tmp.push(a);
-            if (delay > 10) playTone(parseFloat(collection[i].style.height)*3+200);
+            if (delay >= 10) playTone(parseFloat(collection[i].style.height)*3+200);
             i++;
             collection[left].style.backgroundColor = "purple";
             collection[right].style.backgroundColor = "purple";
         }
         else {
             tmp.push(b);
-            if (delay > 10) playTone(parseFloat(collection[j].style.height)*3+200);
+            if (delay >= 10) playTone(parseFloat(collection[j].style.height)*3+200);
             j++;
             collection[left].style.backgroundColor = "purple";
             collection[right].style.backgroundColor = "purple";
         }
-        if (delay > 10) await sleep(delay-10);
+        if (delay >= 10) await sleep(delay-10);
         else {
             step++;
             if (step >= max_step) {
@@ -256,7 +256,7 @@ async function mSort(left, right) {
         tmp.push(parseFloat(collection[i].style.height));
         collection[left].style.backgroundColor = "purple";
         collection[right].style.backgroundColor = "purple";
-        if (delay > 10) await sleep((delay-10)/2);
+        if (delay >= 10) await sleep((delay-10)/2);
         else {
             step++;
             if (step >= max_step) {
@@ -266,7 +266,7 @@ async function mSort(left, right) {
             }
         }
         if (Stopped) return;
-        if (delay > 10) playTone(parseFloat(collection[i].style.height)*3+200);
+        if (delay >= 10) playTone(parseFloat(collection[i].style.height)*3+200);
         i++;
     }
     while (j <= right) {
@@ -274,7 +274,7 @@ async function mSort(left, right) {
         tmp.push(parseFloat(collection[j].style.height));
         collection[left].style.backgroundColor = "purple";
         collection[right].style.backgroundColor = "purple";
-        if (delay > 10) await sleep((delay-10)/2);
+        if (delay >= 10) await sleep((delay-10)/2);
         else {
             step++;
             if (step >= max_step) {
@@ -284,13 +284,13 @@ async function mSort(left, right) {
             }
         }
         if (Stopped) return;
-        if (delay > 10) playTone(parseFloat(collection[j].style.height)*3+200);
+        if (delay >= 10) playTone(parseFloat(collection[j].style.height)*3+200);
         j++;
     }
     for (let i = 0; i < tmp.length; i++) {
         collection[i + left].style.height = tmp[i] + "%";
         collection[i + left].style.backgroundColor = "green";
-        if (delay > 10) await sleep(delay-10);
+        if (delay >= 10) await sleep(delay-10);
         else {
             step++;
             if (step >= max_step) {
@@ -300,7 +300,7 @@ async function mSort(left, right) {
             }
         }
         if (Stopped) return;
-        if (delay > 10) playTone(parseFloat(collection[i].style.height)*3+200);
+        if (delay >= 10) playTone(parseFloat(collection[i].style.height)*3+200);
     }
 }
 // async function insertionSort()
