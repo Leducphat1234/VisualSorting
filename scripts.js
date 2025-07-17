@@ -29,6 +29,12 @@ function getInput() {
         container.appendChild(childDiv);
     }
 }
+function hidenote() {
+    const note = document.getElementById("note");
+    const button = document.getElementById("hidenote");
+    note.style.display = "none";
+    button.style.display = "none";
+}
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -236,6 +242,7 @@ async function mSort(left, right) {
         if (Stopped) return;
     }
 }
+// async function insertionSort()
 async function StartSorting(Sort) {
     const check = document.getElementById("checker");
     check.innerText = "Sorting...";
