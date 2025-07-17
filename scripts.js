@@ -26,7 +26,7 @@ function getInput() {
     for (let i = 0; i < n; i++) {
         const childDiv = document.createElement("div");
         childDiv.className = "child";
-        childDiv.style.height = Math.floor(Math.random() * 101) + Math.random() + "%";
+        childDiv.style.height = Math.floor(Math.random() * 99) + 1 + Math.random() + "%";
         childDiv.style.width = width + "px";
         childDiv.style.marginLeft = width/5;
         childDiv.style.marginRight = width/5;
