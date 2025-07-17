@@ -18,6 +18,10 @@ bw.addEventListener("input", () => {
 function getInput() {
     container.innerHTML = "";
     n = parseInt(document.getElementById("n").value);
+    if (n > 1000000) {
+        window.alert("Warning: n should not greater than 1000000 or the page may not respond!!!");
+        return;
+    }
     stopSorting();
     for (let i = 0; i < n; i++) {
         const childDiv = document.createElement("div");
