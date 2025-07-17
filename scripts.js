@@ -4,7 +4,8 @@ const currentSpeed = document.getElementById("currentSpeed");
 speed.addEventListener("input", () => {
     let cur_speed = parseInt(speed.value);
     currentSpeed.innerText = cur_speed + "%";
-    delay = 100 - cur_speed;
+    if (cur_speed == 1) delay = 1000;
+    else delay = 100 - cur_speed;
     max_step = -999*delay+10000;
 })
 const container = document.getElementById("container"),
